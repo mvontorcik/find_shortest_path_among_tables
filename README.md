@@ -1,6 +1,6 @@
 # find_shortest_path_among_tables
 Alg for finding shortest path among tables in PostreSQL db
-
+<pre>
 How to find which tables to join using shortest path algorithm
 
 Sometimes it is hard to determine which tables to join if we need data from topologicaly distant tables in large and complex data model. Fortunately graph theory algorithms like shortest path algorithm can help us.
@@ -9,21 +9,22 @@ Implementation
 
 Dijkstra's algorithm for finding the shortest paths between nodes in a graph is decribed in wikipedia at https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm.
 The algorithm has only 19 lines of metacode:
- 1  function Dijkstra(Graph, source):
+
+ 1  function Dijkstra(Graph, source): 
  2
- 3      for each vertex v in Graph.Vertices:            
- 4          dist[v] ← INFINITY                 
- 5          prev[v] ← UNDEFINED                
- 6          add v to Q                     
- 7      dist[source] ← 0                       
+ 3      for each vertex v in Graph.Vertices:    
+ 4          dist[v] ← INFINITY     
+ 5          prev[v] ← UNDEFINED     
+ 6          add v to Q            
+ 7      dist[source] ← 0        
  8     
  9      while Q is not empty:
-10          u ← vertex in Q with min dist[u]   
+10          u ← vertex in Q with min dist[u]  
 11          remove u from Q
 12                                        
 13          for each neighbor v of u still in Q:
 14              alt ← dist[u] + Graph.Edges(u, v)
-15              if alt < dist[v]:              
+15              if alt < dist[v]:   
 16                  dist[v] ← alt
 17                  prev[v] ← u
 18
@@ -321,3 +322,4 @@ Again see ER diagram in file example_tables3.svg.
 
 If we checked all transitions between tables and if they make sense from logical point of view we found the real path for joining source and target tables.
 
+</pre>
